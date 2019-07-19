@@ -6,8 +6,7 @@ from slack import WebClient
 import settings
 
 
-def send_message(to, text, icon_emoji='alarm_clock', username='@CheckWeb'):
-    # sc = WebClient(token=settings.TOKEN, run_async=True)
+def send_message(to, text, icon_emoji=':alarm_clock:', username='@CheckWeb'):
     sc = WebClient(token=settings.TOKEN)
 
     sc.chat_postMessage(
@@ -30,6 +29,11 @@ def main(url, monitoring_name, to, seconds):
                       'Chrome/39.0.2171.95 Safari/537.36'
     }
 
+    username = f'{monitoring_name}@CheckWeb'
+
+    text = f'Captain, I started monitoring {url} with the name `{monitoring_name}`'
+    send_message(to, text, username=username)
+
     response = requests.get(url, headers=headers)
     last_response_text = response.text
 
@@ -40,13 +44,13 @@ def main(url, monitoring_name, to, seconds):
         if last_response_text != response.text:
             last_response_text == response.text
 
-            text = f"While on guard, I found that '{monitoring_name}' changed "\
+            text = f"While on guard, I found that `{monitoring_name}` changed "\
                 f"@ {url}, captain!"
 
             current_time = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
             print(current_time, ':', text)
 
-            send_message(to, text)
+            send_message(to, text, username=username)
 
 
 if __name__ == '__main__':
