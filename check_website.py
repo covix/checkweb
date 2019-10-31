@@ -10,10 +10,10 @@ def send_message(to, text, icon_emoji=':alarm_clock:', username='@CheckWeb'):
     sc = WebClient(token=settings.TOKEN)
 
     sc.chat_postMessage(
-        channel=to,  # or '@to_user'
-        text=text,
-        icon_emoji=icon_emoji,
-        username=username  # username is the "sender" name
+        channel = to,  # or '@to_user'
+        text = text,
+        icon_emoji = icon_emoji,
+        username = username  # username is the "sender" name
     )
 
 
