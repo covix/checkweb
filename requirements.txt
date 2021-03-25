@@ -16,7 +16,7 @@ opencv-python==4.1.0.25
 pdbx==1.0
 progressbar2==3.39.3
 python-utils==2.3.0
-PyYAML==5.1
+PyYAML==5.4
 requests==2.22.0
 scipy==1.2.1
 slackclient==2.1.0
